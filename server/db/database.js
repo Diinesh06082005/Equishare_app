@@ -1,4 +1,4 @@
-// server/db/database.js
+// server/db/database.js — Database connection manager and schema initializer
 // Supports SQLite locally and PostgreSQL when deployed (using process.env.DATABASE_URL).
 
 const { Pool } = require('pg');
