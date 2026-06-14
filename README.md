@@ -172,3 +172,9 @@ This application is ready to be deployed to **Render** (backend & database) and 
      - `VITE_API_URL`: Set this to your Render Web Service URL with the `/api` suffix (e.g., `https://equishare-api.onrender.com/api`).
 2. **SPA Routing Support**:
    - A custom `client/vercel.json` is included in the codebase. It automatically rewrites non-static assets to `/index.html` to support React Router reload fallback on custom sub-routes (e.g., `/group/:id`).
+
+---
+
+## AI Assistant Configuration
+This repository was developed with the assistance of **Antigravity (Google DeepMind)**, an agentic AI coding assistant integrated directly into the workspace workflow.
+
