@@ -1,4 +1,4 @@
-// src/context/AppContext.jsx
+// src/context/AppContext.jsx — React Context API for global state management
 import React, { createContext, useContext, useReducer, useCallback, useEffect } from 'react';
 import * as api from '../api';
 
