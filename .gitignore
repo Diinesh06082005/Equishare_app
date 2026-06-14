@@ -1,0 +1,18 @@
+node_modules/
+dist/
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# SQLite Database files
+*.db
+*.db-journal
+*.db-wal
+server/db/equishare.db
+server/db/splitwise.db
+
+# OS files
+.DS_Store
+Thumbs.db
