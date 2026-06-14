@@ -2,7 +2,10 @@
 import axios from 'axios';
 import { openDB } from 'idb';
 
-const BASE = import.meta.env.VITE_API_URL || '/api';
+let BASE = import.meta.env.VITE_API_URL || '/api';
+if (BASE && BASE.startsWith('http') && !BASE.endsWith('/api') && !BASE.endsWith('/api/')) {
+  BASE = BASE.replace(/\/$/, '') + '/api';
+}
 let offlineMode = false;
 
 const api = axios.create({ baseURL: BASE, timeout: 8000 });
