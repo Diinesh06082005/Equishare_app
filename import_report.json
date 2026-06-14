@@ -1,0 +1,112 @@
+{
+  "summary": {
+    "total_lines": 20,
+    "valid_rows": 16,
+    "skipped_rows": 4,
+    "anomaly_count": 13,
+    "anomaly_types": [
+      "CURRENCY_MISMATCH",
+      "EXPENSE_BEFORE_MEMBER_JOIN",
+      "DUPLICATE_ENTRY",
+      "SPLIT_SUM_MISMATCH",
+      "MISSING_DESCRIPTION",
+      "INVALID_AMOUNT",
+      "MISSING_PAID_BY",
+      "UNKNOWN_MEMBER",
+      "NEGATIVE_AMOUNT"
+    ]
+  },
+  "anomalies": [
+    {
+      "code": "CURRENCY_MISMATCH",
+      "severity": "warning",
+      "message": "Row 4: Amount \"$90\" — currency ambiguous. Policy: treat INR symbol (₹/Rs) as INR, $ as USD, bare number as INR.",
+      "action": "Interpreted as USD 90",
+      "field": "amount"
+    },
+    {
+      "code": "EXPENSE_BEFORE_MEMBER_JOIN",
+      "severity": "warning",
+      "message": "Row 4: \"dev\" joined mid-April but this expense is dated Fri Mar 15 2024. Policy: record with a note, flag for manual review.",
+      "action": "Recorded with anomaly flag — requires manual review",
+      "field": "date"
+    },
+    {
+      "code": "DUPLICATE_ENTRY",
+      "severity": "warning",
+      "message": "Row 5: Possible duplicate — same payer, amount, and description seen before. Policy: skip duplicate, keep original.",
+      "action": "Row skipped as duplicate",
+      "field": "all"
+    },
+    {
+      "code": "SPLIT_SUM_MISMATCH",
+      "severity": "warning",
+      "message": "Row 9: Split amounts (4500.00) don't sum to total (5000.00). Policy: ignore provided splits, use equal split instead.",
+      "action": "Overridden to equal split",
+      "field": "splits"
+    },
+    {
+      "code": "CURRENCY_MISMATCH",
+      "severity": "warning",
+      "message": "Row 10: Amount \"$45\" — currency ambiguous. Policy: treat INR symbol (₹/Rs) as INR, $ as USD, bare number as INR.",
+      "action": "Interpreted as USD 45",
+      "field": "amount"
+    },
+    {
+      "code": "MISSING_DESCRIPTION",
+      "severity": "warning",
+      "message": "Row 14: No description found. Using \"Unknown Expense\".",
+      "action": "Defaulted description to \"Unknown Expense\"",
+      "field": "description"
+    },
+    {
+      "code": "INVALID_AMOUNT",
+      "severity": "error",
+      "message": "Row 15: Amount \"N/A\" is not a valid number. Row skipped.",
+      "action": "Row skipped",
+      "field": "amount"
+    },
+    {
+      "code": "MISSING_PAID_BY",
+      "severity": "error",
+      "message": "Row 16: No \"paid_by\" field found. Row skipped — cannot determine who paid.",
+      "action": "Row skipped",
+      "field": "paid_by"
+    },
+    {
+      "code": "UNKNOWN_MEMBER",
+      "severity": "error",
+      "message": "Row 17: Payer \"unknown person\" is not a known group member. Row skipped.",
+      "action": "Row skipped — unknown member",
+      "field": "paid_by"
+    },
+    {
+      "code": "NEGATIVE_AMOUNT",
+      "severity": "warning",
+      "message": "Row 18: Amount is negative (-₹500). Policy: treat as a refund — record as positive amount with description prefixed \"REFUND:\"",
+      "action": "Converted to refund: 500 INR",
+      "field": "amount"
+    },
+    {
+      "code": "CURRENCY_MISMATCH",
+      "severity": "warning",
+      "message": "Row 19: Amount \"$-200\" — currency ambiguous. Policy: treat INR symbol (₹/Rs) as INR, $ as USD, bare number as INR.",
+      "action": "Interpreted as USD -200",
+      "field": "amount"
+    },
+    {
+      "code": "NEGATIVE_AMOUNT",
+      "severity": "warning",
+      "message": "Row 19: Amount is negative ($-200). Policy: treat as a refund — record as positive amount with description prefixed \"REFUND:\"",
+      "action": "Converted to refund: 200 USD",
+      "field": "amount"
+    },
+    {
+      "code": "EXPENSE_BEFORE_MEMBER_JOIN",
+      "severity": "warning",
+      "message": "Row 20: \"sam\" joined mid-April but this expense is dated Fri Mar 01 2024. Policy: record with a note, flag for manual review.",
+      "action": "Recorded with anomaly flag — requires manual review",
+      "field": "date"
+    }
+  ]
+}
